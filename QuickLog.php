@@ -19,6 +19,8 @@ use Bat\FileSystemTool;
 class QuickLog
 {
 
+    private static $inst;
+
     private $dir;
     private $defaultName;
     private $extensions;
@@ -52,6 +54,14 @@ class QuickLog
     public static function create()
     {
         return new static();
+    }
+
+    public static function inst()
+    {
+        if (null === self::$inst) {
+            self::$inst = self::create();
+        }
+        return self::$inst;
     }
 
 
