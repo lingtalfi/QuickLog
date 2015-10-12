@@ -29,6 +29,17 @@ Then, we can use it for the rest of the application.
 
 
 ```php
+
+<?php
+
+
+use QuickLog\QuickLog;
+
+require_once "bigbang.php"; 
+
+
+
+
 // minimum setup
 $oLog = QuickLog::create()->setDir(__DIR__ . '/log'); // we need to set the dir that will contain all log files
 
@@ -42,6 +53,10 @@ $url = 'http://nonsense.com/ssssssss';
 $oLog->addEntry('Oops, not found: '.  $url, 'badurls'); // this message will be written to the badurls.txt file
 ```
 
+
+Note: see 
+[bigbang technique](https://github.com/lingtalfi/universe/blob/master/planets/TheScientist/convention.portableAutoloader.eng.md)
+for more details on the bigbang one liner.
 
 
 
