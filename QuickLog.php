@@ -43,6 +43,9 @@ class QuickLog
         $this->maxSizes = [
             '*' => 1000000,
         ];
+        $this->onError = function ($m) {
+            throw new \Exception ($m);
+        };
     }
 
 
