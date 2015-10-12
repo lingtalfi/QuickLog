@@ -41,7 +41,7 @@ require_once "bigbang.php";
 
 
 // minimum setup
-$oLog = QuickLog::create()->setDir(__DIR__ . '/log'); // we need to set the dir that will contain all log files
+$oLog = QuickLog::inst()->setDir(__DIR__ . '/log'); // we need to set the dir that will contain all log files
 
 
 // now we can add entries to our log, the default log is quicklog.txt
@@ -69,7 +69,7 @@ More details are provided
 
 ```php
 
-$o = QuickLog::create()
+$o = QuickLog::inst()
 ->onError(function(){
     // send mail to webmaster
     // default is to throw an exception
