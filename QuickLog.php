@@ -27,6 +27,7 @@ class QuickLog
     private $separators;
     private $maxSizes;
     private $onError;
+    private $onRotate;
     private $errorPrefix;
     private $_started;
 
@@ -94,6 +95,9 @@ class QuickLog
             rename($file, $copy);
             touch($file);
             chmod($file, 0777);
+            if (is_callable($this->onRotate)) {
+                call_user_func($this->onRotate, $logName, $maxSize, $msg);
+            }
         }
 
 
@@ -191,6 +195,12 @@ class QuickLog
     public function setOnError(callable $onError)
     {
         $this->onError = $onError;
+        return $this;
+    }
+
+    public function setOnRotate(callable $onRotate)
+    {
+        $this->onRotate = $onRotate;
         return $this;
     }
 

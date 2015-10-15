@@ -55,7 +55,7 @@ $oLog->addEntry('Oops, not found: '.  $url, 'badurls'); // this message will be 
 
 
 Note: see 
-[bigbang technique](https://github.com/lingtalfi/universe/blob/master/planets/TheScientist/convention.portableAutoloader.eng.md)
+[bigbang technique](https://github.com/lingtalfi/TheScientist/blob/master/convention.portableAutoloader.eng.md)
 for more details on the bigbang one liner.
 
 
@@ -73,6 +73,9 @@ $o = QuickLog::inst()
 ->onError(function(){
     // send mail to webmaster
     // default is to throw an exception
+})
+->onRotate(function($logName, $maxSize, $lastMsg){
+    // sendMailToWebMaster("Hey, webmaster! log $logName has been rotated (max size of $maxSize bytes was exceeded)")
 })
 ->setDir('/path/do/log.dir') // default is the temp dir of the system
 ->setDefaultName('mylog')  // default is quicklog
