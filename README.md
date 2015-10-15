@@ -74,6 +74,7 @@ $o = QuickLog::inst()
     // send mail to webmaster
     // default is to throw an exception
 })
+// onRotate: define a callback like this, or an array of callbacks, using logNames as keys, like maxSize below
 ->onRotate(function($logName, $maxSize, $lastMsg){
     // sendMailToWebMaster("Hey, webmaster! log $logName has been rotated (max size of $maxSize bytes was exceeded)")
 })

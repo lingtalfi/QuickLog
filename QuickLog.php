@@ -27,7 +27,7 @@ class QuickLog
     private $separators;
     private $maxSizes;
     private $onError;
-    private $onRotate;
+    private $onRotates;
     private $errorPrefix;
     private $_started;
 
@@ -45,6 +45,9 @@ class QuickLog
         ];
         $this->maxSizes = [
             '*' => 1000000,
+        ];
+        $this->onRotates = [
+            '*' => null,
         ];
         $this->onError = function ($m) {
             throw new \Exception ($m);
@@ -95,8 +98,10 @@ class QuickLog
             rename($file, $copy);
             touch($file);
             chmod($file, 0777);
-            if (is_callable($this->onRotate)) {
-                call_user_func($this->onRotate, $logName, $maxSize, $msg);
+
+            $onRotate = (array_key_exists($logName, $this->onRotates)) ? $this->onRotates[$logName] : $this->onRotates['*'];
+            if (is_callable($onRotate)) {
+                call_user_func($onRotate, $logName, $maxSize, $msg);
             }
         }
 
@@ -198,9 +203,25 @@ class QuickLog
         return $this;
     }
 
-    public function setOnRotate(callable $onRotate)
+    public function setOnRotates($onRotates)
     {
-        $this->onRotate = $onRotate;
+        if (is_callable($onRotates)) {
+            $this->onRotates['*'] = $onRotates;
+        }
+        elseif (is_array($onRotates)) {
+            foreach ($onRotates as $k => $f) {
+                if (is_callable($f)) {
+                    $this->onRotates[$k] = $f;
+                }
+                else {
+                    $this->error(sprintf("onRotates argument must be of either a callable or an array of callables, %s given", gettype($onRotates)));
+                    break;
+                }
+            }
+        }
+        else {
+            $this->error(sprintf("onRotates argument must be of either a callable or an array of callables, %s given", gettype($onRotates)));
+        }
         return $this;
     }
 
