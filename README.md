@@ -91,6 +91,18 @@ $o = QuickLog::inst()
 ```
 
 
+
+
+
+Recommendation
+-------------------
+
+You also might be interested in [ApplicationLog class](https://github.com/lingtalfi/ApplicationLog)
+
+
+
+
+
 Dependencies
 ------------------
 
