@@ -94,7 +94,7 @@ $o = QuickLog::inst()
 Dependencies
 ------------------
 
-- [lingtalfi/Bat 1.0.4](https://github.com/lingtalfi/Bat)
+- [lingtalfi/Bat 1.04](https://github.com/lingtalfi/Bat)
 
 
 
