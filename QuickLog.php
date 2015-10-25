@@ -88,20 +88,26 @@ class QuickLog
             $number = 2;
             $copy = $this->dir . "/" . $logName . "-$number" . "." . $ext;
             $max = 10000;
+            $infLoop = false;
             while (file_exists($copy)) {
                 $copy = $this->dir . "/" . $logName . "-$number" . "." . $ext;
                 $number++;
                 if ($number > $max) {
                     $this->error("Couldn't find a unique filename, tried $number times");
+                    $infLoop = true;
+                    break;
                 }
             }
-            rename($file, $copy);
-            touch($file);
-            chmod($file, 0777);
+            if (false === $infLoop) {
 
-            $onRotate = (array_key_exists($logName, $this->onRotates)) ? $this->onRotates[$logName] : $this->onRotates['*'];
-            if (is_callable($onRotate)) {
-                call_user_func($onRotate, $logName, $maxSize, $msg);
+                rename($file, $copy);
+                touch($file);
+                chmod($file, 0777);
+
+                $onRotate = (array_key_exists($logName, $this->onRotates)) ? $this->onRotates[$logName] : $this->onRotates['*'];
+                if (is_callable($onRotate)) {
+                    call_user_func($onRotate, $logName, $maxSize, $msg);
+                }
             }
         }
 
