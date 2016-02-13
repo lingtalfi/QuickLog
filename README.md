@@ -94,17 +94,15 @@ $o = QuickLog::inst()
 
 
 
-Recommendation
--------------------
-
-You also might be interested in [ApplicationLog class](https://github.com/lingtalfi/ApplicationLog)
-
-
-
 Related
 ------------
 
-- [InstantLog](https://github.com/lingtalfi/InstantLog): simplest log ever
+- [ApplicationLog class](https://github.com/lingtalfi/ApplicationLog): log for your application
+- [InstantLog](https://github.com/lingtalfi/InstantLog): log for instant debug
+
+
+
+
 
 
 
