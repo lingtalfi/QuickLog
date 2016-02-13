@@ -101,6 +101,11 @@ You also might be interested in [ApplicationLog class](https://github.com/lingta
 
 
 
+Related
+------------
+
+- [InstantLog](https://github.com/lingtalfi/InstantLog): simplest log ever
+
 
 
 Dependencies
