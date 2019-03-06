@@ -1,6 +1,6 @@
 <?php
 
-namespace QuickLog;
+namespace Ling\QuickLog;
 
 /*
  * LingTalfi 2015-10-12
@@ -14,7 +14,7 @@ namespace QuickLog;
  * 
  * 
  */
-use Bat\FileSystemTool;
+use Ling\Bat\FileSystemTool;
 
 class QuickLog
 {

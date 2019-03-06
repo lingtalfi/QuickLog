@@ -15,7 +15,7 @@ Install
 ==========
 Using the [uni](https://github.com/lingtalfi/universe-naive-importer) command.
 ```bash
-uni import QuickLog
+uni import Ling/QuickLog
 ```
 
 
@@ -44,7 +44,7 @@ Then, we can use it for the rest of the application.
 <?php
 
 
-use QuickLog\QuickLog;
+use Ling\QuickLog\QuickLog;
 
 require_once "bigbang.php"; 
 
